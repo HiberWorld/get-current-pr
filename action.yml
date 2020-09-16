@@ -1,11 +1,16 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: Get Current Pull Request
+author: Hiber
+description: Get the PR associated with the current commit.
 inputs:
-  milliseconds: # change this
+  github-token:
+    description: The GitHub token used to create an authenticated client.
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  sha:
+    description: Sha to get PR for.  Defaults to current sha.
+    required: false
+  filterOutClosed:
+    description: True, False, 1 or 0 if only open PRs should be returned
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
