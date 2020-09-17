@@ -16,6 +16,12 @@ async function run(): Promise<void> {
     const sha = core.getInput('sha')
     const filterOutClosed = getInputBool('filterOutClosed')
 
+    if (context.payload.pull_request) {
+      core.setOutput('number', context.payload.pull_request.number)
+      core.setOutput('pr', JSON.stringify(context.payload.pull_request))
+      return
+    }
+
     const result = await getOctokit(
       token,
       {}
