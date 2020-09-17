@@ -25,7 +25,6 @@ import * as path from 'path'
 //   console.log(cp.execSync(`node ${ip}`, options).toString())
 // })
 
-
 test('test runs', () => {
-  expect(true).toBe(true);
+  expect(true).toBe(true)
 })

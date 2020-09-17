@@ -1442,6 +1442,11 @@ function run() {
             const token = core.getInput('github-token', { required: true });
             const sha = core.getInput('sha');
             const filterOutClosed = getInputBool('filterOutClosed');
+            if (github_1.context.payload.pull_request) {
+                core.setOutput('number', github_1.context.payload.pull_request.number);
+                core.setOutput('pr', JSON.stringify(github_1.context.payload.pull_request));
+                return;
+            }
             const result = yield github_1.getOctokit(token, {}).repos.listPullRequestsAssociatedWithCommit({
                 owner: github_1.context.repo.owner,
                 repo: github_1.context.repo.repo,
